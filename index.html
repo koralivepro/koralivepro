@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مباريات اليوم - Yalla Live Pro</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="main-bg">
+        <header class="main-header">
+            <div class="site-title" style="display:flex;align-items:center;justify-content:center;gap:18px;padding-bottom:16px;">
+                <!-- Removed football emoji -->
+                <div style="display:flex;flex-direction:column;align-items:flex-end;">
+                    <span style="font-size:2.1rem;color:#fff;font-weight:900;letter-spacing:2px;text-shadow:0 2px 8px rgba(0,0,0,0.10);">YallaKoraPro</span>
+                </div>
+            </div>
+            <div class="header-row">
+                <nav class="tabs-nav">
+                    <a href="#" id="tab-tomorrow">مباريات الغد</a>
+                    <a href="#" id="tab-today" class="active">مباريات اليوم</a>
+                    <a href="#" id="tab-yesterday">مباريات الأمس</a>
+                </nav>
+                <div class="clock-section">
+                    <span id="clock"></span>
+                    <span class="gmt-label">| GMT توقيت غرينتش</span>
+                </div>
+            </div>
+            <div class="today-title">
+                <span class="calendar-icon">📅</span>
+                <span class="today-highlight">مباريات اليوم</span>
+            </div>
+        </header>
+        <main>
+            <div id="matches-board" class="matches-list">
+                <!-- Matches will be loaded here by JS -->
+            </div>
+        </main>
+        <footer class="main-footer">
+            <p>&copy; 2025 Yalla Live Pro. جميع الحقوق محفوظة.</p>
+        </footer>
+    </div>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Clock logic
+        function updateClock() {
+            const now = new Date();
+            const h = String(now.getUTCHours()).padStart(2, '0');
+            const m = String(now.getUTCMinutes()).padStart(2, '0');
+            const s = String(now.getUTCSeconds()).padStart(2, '0');
+            document.getElementById('clock').textContent = `${h}:${m}:${s}`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+        // Load matches for today by default
+        document.addEventListener('DOMContentLoaded', () => {
+            loadMatches({ importantOnly: true, adInterval: 0 });
+        });
+        // Tab navigation logic
+        document.getElementById('tab-today').addEventListener('click', function(e) {
+            e.preventDefault();
+            loadMatches({ importantOnly: true, adInterval: 0 });
+            setActiveTab('tab-today');
+        });
+        document.getElementById('tab-yesterday').addEventListener('click', function(e) {
+            e.preventDefault();
+            const d = new Date();
+            d.setDate(d.getDate() - 1);
+            loadMatches({ importantOnly: true, adInterval: 0, date: d.toISOString().slice(0, 10) });
+            setActiveTab('tab-yesterday');
+        });
+        document.getElementById('tab-tomorrow').addEventListener('click', function(e) {
+            e.preventDefault();
+            const d = new Date();
+            d.setDate(d.getDate() + 1);
+            loadMatches({ importantOnly: true, adInterval: 0, date: d.toISOString().slice(0, 10) });
+            setActiveTab('tab-tomorrow');
+        });
+        function setActiveTab(tabId) {
+            document.querySelectorAll('.tabs-nav a').forEach(a => a.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+        }
+    </script>
+</body>
+</html>

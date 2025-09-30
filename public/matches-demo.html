@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>مباريات اليوم - Football API Demo</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .match-card { margin-bottom: 16px; }
+  </style>
+</head>
+<body>
+  <h1>مباريات اليوم</h1>
+  <div id="matches-board"></div>
+  <script>
+    fetch('matches.json')
+      .then(res => res.json())
+      .then(matches => {
+        const board = document.getElementById('matches-board');
+        board.innerHTML = '';
+        matches.forEach(match => {
+          const div = document.createElement('div');
+          div.className = 'match-card';
+          div.innerHTML = `
+            <div class="league-title">${match.league}</div>
+            <div>${match.home} vs ${match.away}</div>
+            <div>${new Date(match.date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
+          `;
+          board.appendChild(div);
+        });
+      })
+      .catch(err => {
+        document.getElementById('matches-board').innerHTML = '<p>تعذر تحميل المباريات.</p>';
+      });
+  </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جميع مباريات اليوم - Yalla Live Pro</title>
+    <meta name="description" content="جدول بجميع مباريات اليوم، مع نتائج مباشرة وتوقيتات محدثة لجميع الدوريات والبطولات.">
+    <link rel="canonical" href="https://www.yourwebsite.com/today.html">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="/">Yalla Live Pro</a></h1>
+            <nav>
+                <a href="/">الرئيسية</a>
+                <a href="/today.html" class="active">كل المباريات</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2>جميع مباريات اليوم</h2>
+        <div id="matches-board" class="matches-container">
+            <div class="loader">جاري تحميل المباريات...</div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Yalla Live Pro. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        // تحميل جميع المباريات في صفحة "كل المباريات"
+        document.addEventListener('DOMContentLoaded', () => {
+            loadMatches({ importantOnly: false, adInterval: 5 });
+        });
+    </script>
+</body>
+</html>

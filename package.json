@@ -1,0 +1,14 @@
+{
+  "name": "football-matches-fetcher",
+  "version": "1.0.0",
+  "description": "Fetches important football matches daily from API-Football and saves to public/matches.json for website use.",
+  "main": "fetch-matches.js",
+  "scripts": {
+    "fetch": "node fetch-matches.js"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.7"
+  },
+  "author": "",
+  "license": "MIT"
+}

@@ -1,0 +1,186 @@
+/* Cleaned and consolidated stylesheet for koraliveprotest */
+:root {
+    --page-bg: #1f2026;
+    --card-bg: #232533;
+    --text: #fff;
+    --muted: #b0b3c6;
+    --accent: #00ffd0;
+    --live: #1fd655;
+    --finished: #e74c3c;
+}
+
+html, body { height: 100%; }
+
+body {
+    background: #fff;
+    color: #181a20;
+    font-family: 'Tajawal', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    direction: rtl;
+}
+
+.main-bg { min-height: 100vh; }
+
+.main-header {
+    background: var(--card-bg);
+    border-radius: 16px;
+    margin: 16px;
+    padding: 12px 0 0 0;
+}
+
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+}
+
+.tabs-nav {
+    display: flex;
+    gap: 18px;
+}
+
+.tabs-nav a {
+    color: var(--text);
+    background: none;
+    padding: 8px 22px;
+    border-radius: 8px 8px 0 0;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: background .2s, color .2s;
+}
+
+.tabs-nav a.active, .tabs-nav a:hover {
+    background: #181a20;
+    color: var(--accent);
+}
+
+.clock-section {
+    color: var(--muted);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.today-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px 0 24px;
+    font-size: 1.3rem;
+    color: var(--accent);
+}
+
+.matches-list {
+    margin: 24px auto;
+    max-width: 900px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.match-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #232533;
+  border-radius: 12px;
+  margin: 16px 0;
+  padding: 18px 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.team {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.team.home {
+  flex-direction: row;
+}
+
+.team.away {
+  flex-direction: row-reverse;
+}
+
+.team img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #181a20;
+  border: 2px solid #232533;
+}
+
+.team-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.score {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.status-btn {
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 16px;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #fff;
+  background: #b0b3c6;
+}
+
+.status-btn.live {
+  background: #e74c3c;
+}
+
+.league-name {
+  font-size: 0.95rem;
+  color: #b0b3c6;
+  margin-top: 2px;
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .match-card {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px 8px;
+  }
+  .team img {
+    width: 36px;
+    height: 36px;
+  }
+  .score {
+    font-size: 1.3rem;
+  }
+  .status-btn {
+    font-size: 0.9rem;
+    padding: 4px 12px;
+  }
+}
+
+.main-footer {
+    text-align: center;
+    margin-top: 32px;
+    padding: 18px;
+    color: var(--muted);
+    background: var(--card-bg);
+    border-radius: 12px;
+}
